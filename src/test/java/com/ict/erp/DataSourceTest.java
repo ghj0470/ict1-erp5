@@ -57,7 +57,7 @@ public class DataSourceTest {
 	@Test
 	public void ssTest() {
 		List<LevelInfo> liList = ss.selectList("SQL.LEVELINFO.selectLevelInfo");
-//		assertEquals(liList.size(), 3);
+		assertEquals(liList.size(), 3);
 	}
 
 	@Test
