@@ -5,20 +5,27 @@
 <mapper namespace="SQL.LEVELINFO">
 	<select id="selectLevelInfo" resultType="li">
 		select * from level_info
+		<where>
+			<if test="lilevel !=null">lilevel 'like%' || #{lilevel} || '%'</if>
+			<if test="lidesc !=null">lidesc like'%' || #{lidesc} || '%'</if>
+			<if test="liname !=null">liname like '%' || #{liname} || '%'</if>
+		</where>
+		order by linum <!-- 정렬 -->
 	</select>
 	<insert id="insertLevelInfo" parameterType="li">
-		insert into
+	<!--  	insert into
 		level_info(linum,lilevel,liname,lidesc)
-		values(linum.nextval,#{lilevel},#{liname},#{lidesc})
+		values(linum.nextval,#{lilevel},#{liname},#{lidesc})-->
+		
 	</insert>
 	<update id="updateLevelInfo" parameterType="li">
-	   update level_info
-	   <set>
-	        <if test="lilevel!=null">lilevel = #{lilevel},</if>
-	        <if test="liname!=null">liname = #{liname},</if>
-	        <if test="lidesc!=null">lidesc = #{lidesc},</if>
-	   </set>
-	   where linum=#{linum}
+		update level_info
+		<set>
+			<if test="lilevel!=null">lilevel = #{lilevel},</if>
+			<if test="liname!=null">liname = #{liname},</if>
+			<if test="lidesc!=null">lidesc = #{lidesc},</if>
+		</set>
+		where linum=#{linum}
 	</update>
 	<delete id="deleteLevelInfo" parameterType="li">
 		delete from
