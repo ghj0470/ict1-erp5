@@ -24,7 +24,7 @@ public class LevelInfoController {
 
 	@RequestMapping(value = "/levelinfo", method = RequestMethod.GET)
 	@ResponseBody
-	public List<LevelInfo> getLevelInfoList(@ModelAttribute LevelInfo li) {
+	public  List<LevelInfo> getLevelInfoList(@ModelAttribute LevelInfo li) {
 		//System.out.println(li);
 		return lis.getLevelInfoList(li);
 	}
